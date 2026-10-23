@@ -5,9 +5,11 @@
   "description": "Unofficial ITIL Foundation (Version 5) mock exam platform: 10 timed exams, 400 questions and a PDF of your mistakes.",
   "scripts": {
     "validate": "python3 validate.py",
-    "build": "node build.js"
+    "build": "node build.js",
+    "test": "node test.js"
   },
   "devDependencies": {
-    "jspdf": "2.5.1"
+    "jspdf": "2.5.1",
+    "playwright": "1.56.1"
   }
 }

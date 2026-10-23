@@ -8,10 +8,11 @@ A structured 7-day (28-hour) self-study course in IT Service Management, with a 
 |---|---|
 | [`guide/ITIL_ISO20000_Study_Guide.pdf`](guide/ITIL_ISO20000_Study_Guide.pdf) | The study guide, ready to read or print (288 pages) |
 | [`guide/ITIL_ISO20000_Study_Guide.docx`](guide/ITIL_ISO20000_Study_Guide.docx) | The same guide as a Word document, for notes and highlighting |
-| [`guide/ITIL_ISO20000_Study_Guide.md`](guide/ITIL_ISO20000_Study_Guide.md) | The Markdown source of the guide |
-| [`guide/build/`](guide/build) | The stylesheet and script that rebuild the PDF and Word files from the Markdown |
+| [`guide/ITIL_ISO20000_Study_Guide.md`](guide/ITIL_ISO20000_Study_Guide.md) | The whole guide as one Markdown file, assembled from `guide/src/` |
+| [`guide/src/`](guide/src) | The source of the guide: one Markdown file per chapter and appendix |
+| [`guide/build/`](guide/build) | The build script, which assembles the Markdown file and builds the Word and PDF versions, and the PDF stylesheet |
 | [`exam-platform/ITIL5_Mock_Exams.html`](exam-platform/ITIL5_Mock_Exams.html) | The mock exam platform. Download it and open it in any browser; it also works offline |
-| [`exam-platform/`](exam-platform) | Source code, question bank and build scripts for the platform |
+| [`exam-platform/`](exam-platform) | Source code and question bank for the platform, with its build, validation and test scripts |
 
 ## The study guide
 
@@ -19,6 +20,14 @@ A structured 7-day (28-hour) self-study course in IT Service Management, with a 
 - **Every chapter** has learning objectives, key takeaways and end-of-chapter questions. The answers are in Appendix A.
 - **The final chapter** (Chapter 16) has understanding questions with full answers, scenario questions with model answers, and a 40-question mock exam.
 - **A 7-day plan** of four hours a day, with two tracks for the last two days: one for the ITIL Foundation (Version 5) exam and one covering ITIL and ISO/IEC 20000.
+
+To change the guide, edit the chapter files in [`guide/src/`](guide/src) and run:
+
+```bash
+guide/build/build.sh
+```
+
+The script joins the chapter files in name order into `guide/ITIL_ISO20000_Study_Guide.md`, then builds the Word and PDF versions from it. It needs [pandoc](https://pandoc.org) and a Chromium-based browser. If the browser isn't on your PATH as `chromium`, set `CHROME` to its path.
 
 ## The exam platform
 

@@ -55,12 +55,15 @@ Each file in [`bank/`](bank) holds one exam:
 Requires Node.js and Python 3.
 
 ```bash
-npm install        # fetches jsPDF 2.5.1
+npm install        # fetches jsPDF 2.5.1 and Playwright 1.56.1
 npm run validate   # checks every exam: 40 questions, the weighting, four unique options, no repeated questions
 npm run build      # writes ITIL5_Mock_Exams.html and dist/itil5-mock-exams.artifact.html
+npm test           # tries the offline page in a headless browser (see below)
 ```
 
 The `dist/` file is a version of the page for publishing as a claude.ai Artifact. It loads jsPDF from cdnjs and, when published with the `downloads`, `db` and `user` capabilities, saves the PDF through the viewer and keeps attempt history in the signed-in user's private storage.
+
+`npm test` opens `ITIL5_Mock_Exams.html` in headless Chromium and takes mock exam 1. It checks that submitting downloads a PDF of mistakes and that the score, the number of mistakes and the pass or fail mark agree. Then it tries practice mode, resuming a session, a topic drill and the phone layout, and fails if the page reports any errors. It needs a browser for Playwright: run `npx playwright install chromium` once, or set `CHROME` to the path of a Chrome or Chromium binary. Screenshots and the downloaded PDF are saved in `test-output/`.
 
 ## Third-party code
 
