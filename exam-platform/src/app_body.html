@@ -1,0 +1,164 @@
+<div class="wrap">
+
+<section id="view-home" aria-labelledby="h-title">
+  <header class="masthead">
+    <p class="eyebrow">Unofficial practice · ITIL Foundation (Version 5)</p>
+    <h1 id="h-title" style="margin-top:6px">ITIL V5 Mock Exams</h1>
+    <p class="lede">Ten full mock exams of 40 questions each, weighted to the Version 5 syllabus. Sit them under exam conditions, then download a PDF of every question you got wrong, with the correct answer and an explanation.</p>
+    <dl class="rules">
+      <div><dt>Questions</dt><dd>40 per exam</dd></div>
+      <div><dt>Time</dt><dd id="rule-time">60 minutes</dd></div>
+      <div><dt>Pass mark</dt><dd>26 of 40 (65%)</dd></div>
+      <div><dt>Format</dt><dd>Closed book</dd></div>
+      <div><dt>Marking</dt><dd>No negative marking</dd></div>
+    </dl>
+    <div class="settings">
+      <div class="seg" role="group" aria-label="Exam time">
+        <button type="button" id="time-60" aria-pressed="true">60 min</button>
+        <button type="button" id="time-75" aria-pressed="false">75 min (+25%)</button>
+      </div>
+      <span class="muted" style="font-size:.85rem;max-width:42ch">Choose 75 minutes if you will sit the exam in a language that is not your first language.</span>
+      <label class="check"><input type="checkbox" id="opt-shuffle" checked> Shuffle answer order</label>
+    </div>
+    <div class="resume" id="resume" hidden>
+      <p id="resume-text"></p>
+      <div class="card-actions">
+        <button type="button" class="btn primary" id="resume-go">Resume</button>
+        <button type="button" class="btn ghost" id="resume-drop">Discard</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="h-exams">
+    <div class="section-head">
+      <h2 id="h-exams">Mock exams</h2>
+      <p class="muted" style="font-size:.92rem;max-width:62ch">Exam mode is timed and shows no answers until you submit. Practice mode is untimed and lets you check each answer as you go.</p>
+    </div>
+    <div class="grid" id="exam-grid"></div>
+  </section>
+
+  <section class="section" aria-labelledby="h-progress">
+    <div class="section-head">
+      <h2 id="h-progress">Your progress</h2>
+      <p class="store-note" id="store-note">Loading your history…</p>
+    </div>
+    <div class="tiles" id="tiles"></div>
+    <div class="two-col">
+      <div class="panel">
+        <h3>Accuracy by syllabus area</h3>
+        <p class="muted" style="font-size:.85rem;margin-top:4px">Across all exam-mode attempts. The vertical line marks the 65% pass level.</p>
+        <div class="bars" id="area-bars" style="margin-top:14px"></div>
+      </div>
+      <div class="panel">
+        <h3>Recent attempts</h3>
+        <div class="table-wrap" id="history" style="margin-top:8px"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-blueprint">
+    <h2 id="h-blueprint">How each exam is built</h2>
+    <div class="two-col">
+      <div class="panel">
+        <ul class="blueprint" id="blueprint"></ul>
+      </div>
+      <div class="panel" style="display:grid;gap:10px;align-content:start">
+        <p>Every mock exam follows the marks per syllabus area reported for the PeopleCert ITIL Foundation (Version 5) syllabus. Inside the value system area, each exam has 7 guiding principles questions, 2 on governance, 3 on continual improvement, 2 on management practices and 2 on the value system's components.</p>
+        <p class="muted">Questions mix straight recall with scenario questions, "missing word" questions and "which two" list questions, which are the formats used in ITIL Foundation exams. The random exam draws a fresh set of 40 from all 400 questions using the same weighting.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>These are unofficial practice questions, written to the ITIL Foundation (Version 5) syllabus areas as described publicly in 2026. They are not official exam questions, and the wording of definitions in the official publication may differ. Check the PeopleCert syllabus before your exam.</p>
+    <p>ITIL® is a registered trademark of the PeopleCert group. This page is not affiliated with PeopleCert or AXELOS.</p>
+  </footer>
+</section>
+
+<section id="view-exam" hidden aria-label="Exam">
+  <div class="exam-bar">
+    <div class="eb-title"><span class="mode-badge" id="eb-mode">Exam</span><strong id="eb-name">Mock exam</strong></div>
+    <div class="clock" id="eb-timer" aria-label="Time left">60:00</div>
+    <div class="eb-progress"><span id="eb-answered">0</span>/<span id="eb-total">40</span> answered</div>
+    <button type="button" class="btn ghost" id="btn-exit" aria-label="Save and exit"><span class="lbl-long">Save and exit</span><span class="lbl-short">Exit</span></button>
+    <button type="button" class="btn primary" id="btn-finish">Finish</button>
+  </div>
+  <div class="exam-grid">
+    <main class="qpaper">
+      <div class="q-head">
+        <span class="q-num">Question <b id="q-index">1</b> of <span id="q-total">40</span></span>
+        <button type="button" class="btn ghost flag-btn" id="btn-flag" aria-pressed="false">Flag for review</button>
+      </div>
+      <p class="q-text" id="q-text"></p>
+      <div class="options" id="q-options" role="radiogroup" aria-labelledby="q-text"></div>
+      <div class="feedback" id="q-feedback" hidden></div>
+      <div class="q-nav">
+        <button type="button" class="btn" id="btn-prev">Previous</button>
+        <div class="right">
+          <button type="button" class="btn" id="btn-check" hidden>Check answer</button>
+          <button type="button" class="btn primary" id="btn-next">Next</button>
+        </div>
+      </div>
+      <p class="kbd-hint">Keyboard: A–D to choose an answer, ← and → to move, F to flag.</p>
+    </main>
+    <aside class="sheet collapsed" id="answer-sheet" aria-labelledby="h-sheet">
+      <div class="sheet-head">
+        <h2 id="h-sheet" style="font-size:1.05rem">Answer sheet</h2>
+        <button type="button" class="btn ghost sheet-toggle" id="sheet-toggle" aria-expanded="false">Show</button>
+      </div>
+      <div class="omr" id="omr"></div>
+      <ul class="legend">
+        <li><i class="l-ans"></i>Answered</li>
+        <li><i></i>Not answered</li>
+        <li><i class="l-flag"></i>Flagged for review</li>
+      </ul>
+      <p class="sheet-foot muted" style="font-size:.82rem">Select a number to jump to that question.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="view-result" hidden aria-labelledby="r-title">
+  <div class="result-head">
+    <div>
+      <p class="eyebrow" id="r-meta"></p>
+      <h1 id="r-title" style="margin-top:6px"></h1>
+      <div class="r-score"><span class="big" id="r-score">0</span><span class="of" id="r-of">/40</span><span class="pct" id="r-pct">0%</span></div>
+      <p class="r-detail" id="r-detail"></p>
+    </div>
+    <div class="stamp" id="r-stamp">PASS</div>
+  </div>
+  <div class="r-actions">
+    <button type="button" class="btn primary" id="r-pdf" data-label="Download PDF of my mistakes">Download PDF of my mistakes</button>
+    <button type="button" class="btn" id="r-retake">Retake</button>
+    <button type="button" class="btn ghost" id="r-home">Back to exams</button>
+  </div>
+  <div class="section">
+    <h2>Score by syllabus area</h2>
+    <div class="panel"><div class="bars" id="r-areas"></div></div>
+  </div>
+  <div class="section">
+    <div class="section-head">
+      <h2>Review answers</h2>
+      <div class="tabs" role="tablist" aria-label="Filter questions">
+        <button type="button" role="tab" id="tab-wrong" aria-selected="true">Mistakes</button>
+        <button type="button" role="tab" id="tab-all" aria-selected="false">All questions</button>
+      </div>
+    </div>
+    <ol class="review" id="r-list"></ol>
+  </div>
+</section>
+
+</div>
+
+<div class="modal" id="submit-modal" hidden role="dialog" aria-modal="true" aria-labelledby="sm-title">
+  <div class="modal-card">
+    <h2 id="sm-title">Submit your exam?</h2>
+    <p id="sm-summary"></p>
+    <label class="check"><input type="checkbox" id="sm-pdf" checked> Download a PDF of my mistakes after submitting</label>
+    <div class="modal-actions">
+      <button type="button" class="btn" id="sm-cancel">Return to questions</button>
+      <button type="button" class="btn primary" id="sm-submit">Submit</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>

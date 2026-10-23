@@ -1,0 +1,13 @@
+{
+  "name": "itil5-mock-exams",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Unofficial ITIL Foundation (Version 5) mock exam platform: 10 timed exams, 400 questions and a PDF of your mistakes.",
+  "scripts": {
+    "validate": "python3 validate.py",
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "jspdf": "2.5.1"
+  }
+}
